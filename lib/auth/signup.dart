@@ -20,6 +20,7 @@ class _SignupState extends State<Signup> {
   final _passwordController = TextEditingController();
   final _cpasswordController = TextEditingController();
 
+  final List<String> cartProdIds = [];
   bool _isLoading = false;
 
   @override
@@ -37,6 +38,7 @@ class _SignupState extends State<Signup> {
     await FirebaseFirestore.instance.collection('users').add({
       "uname": username,
       "email": email,
+      "cartProdIds": cartProdIds,
     });
   }
 
