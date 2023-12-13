@@ -62,7 +62,10 @@ class _GetDataState extends State<GetData> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const PaymentScreen(),
+                      builder: (context) => PaymentScreen(
+                        amount: data['Price'],
+                        title: data['Title'],
+                      ),
                     ),
                   );
                 },
