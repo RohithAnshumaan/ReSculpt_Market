@@ -6,7 +6,14 @@ import 'package:resculpt/constants.dart' as constant;
 import 'package:resculpt/screens/delivery_tracking.dart';
 
 class PaymentScreen extends StatefulWidget {
-  const PaymentScreen({super.key});
+  const PaymentScreen({
+    super.key,
+    required this.amount,
+    required this.title,
+  });
+
+  final double amount;
+  final String title;
 
   @override
   State<PaymentScreen> createState() => _PaymentScreenState();
@@ -21,6 +28,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     super.initState();
+
+    createOrder();
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
@@ -66,7 +75,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         'Basic ${base64Encode(utf8.encode('$username:$password'))}';
 
     Map<String, dynamic> body = {
-      "amount": 100,
+      "amount": widget.amount * 100,
       "currency": "INR",
       "receipt": "rcptid_11"
     };
@@ -89,15 +98,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
   openGateway(String orderId) {
     var options = {
       'key': constant.keyId,
-      'amount': 100, //in the smallest currency sub-unit.
-      'name': 'Acme Corp.',
+      'amount': widget.amount * 100, //in the smallest currency sub-unit.
+      'name': 'Resculpt',
       'order_id': orderId, // Generate order_id using Orders API
-      'description': 'Fine T-Shirt',
+      'description': widget.title,
       'timeout': 60 * 5, // in seconds // 5 minutes
-      'prefill': {
-        'contact': '9123456789',
-        'email': 'ary@example.com',
-      }
+      // 'prefill': {
+      //   'contact': '9123456789',
+      //   'email': 'ary@example.com',
+      // }
     };
     _razorpay.open(options);
   }
@@ -150,22 +159,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Razorpay Demo"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                createOrder();
-              },
-              child: const Text("Pay Rs.100"),
-            )
-          ],
-        ),
-      ),
-    );
+        // appBar: AppBar(
+        //   title: const Text("Razorpay Demo"),
+        // ),
+        // body: Center(
+        //   child: Column(
+        //     mainAxisAlignment: MainAxisAlignment.center,
+        //     children: <Widget>[
+        //       ElevatedButton(
+        //         onPressed: () {
+        //           createOrder();
+        //         },
+        //         child: const Text("Buy Now"),
+        //       )
+        //     ],
+        //   ),
+        // ),
+        );
   }
 }
