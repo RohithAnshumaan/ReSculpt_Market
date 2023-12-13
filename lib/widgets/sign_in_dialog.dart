@@ -12,7 +12,7 @@ void showCustomDialog2(BuildContext context, {required ValueChanged onValue}) {
     pageBuilder: (_, __, ___) {
       return Center(
         child: Container(
-          height: MediaQuery.of(context).size.height*0.8,
+          height: MediaQuery.of(context).size.height * 0.8,
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
           decoration: BoxDecoration(
@@ -33,87 +33,72 @@ void showCustomDialog2(BuildContext context, {required ValueChanged onValue}) {
           ),
           child: Scaffold(
             // backgroundColor: Colors.transparent,
-            body: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 10,),
-                      const Text(
-                        "Sign in",
-                        style: TextStyle(
-                          fontSize: 34,
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 16),
-                        child: Text(
-                          "Access to lots of Innovative products. Buy Products, Share, Encourage UpCycling!!",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const Signin(),
-                      const Row(
-                        children: [
-                          Expanded(
-                            child: Divider(),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
-                            child: Text(
-                              "OR",
-                              style: TextStyle(
-                                color: Colors.black26,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left:45, right:45, top: 35),
-                        child: Row(
-                          children: [
-                            const Text(
-                              "Doesn't have an Account,",
-                              style: TextStyle(color: Colors.black54),
-                            ),
-                            TextButton(
-                              child: const Text("Sign Up",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 15)),
-                              onPressed: () {
-                                showCustomDialog(
-                                  context,
-                                  onValue: (_) {},
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+            body: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-                const Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: -90,
-                  child: CircleAvatar(
-                    radius: 16,
-                    backgroundColor: Colors.white,
-                    child: Icon(
-                      Icons.close,
-                      size: 20,
-                      color: Colors.black,
+                  const Text(
+                    "Sign in",
+                    style: TextStyle(
+                      fontSize: 34,
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                )
-              ],
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 16),
+                    child: Text(
+                      "Access to lots of Innovative products. Buy Products, Share, Encourage UpCycling!!",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const Signin(),
+                  const Row(
+                    children: [
+                      Expanded(
+                        child: Divider(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          "OR",
+                          style: TextStyle(
+                            color: Colors.black26,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 45, right: 45, top: 35),
+                    child: Row(
+                      children: [
+                        const Text(
+                          "Doesn't have an Account,",
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                        TextButton(
+                          child: const Text("Sign Up",
+                              style: TextStyle(
+                                  color: Colors.black, fontSize: 15)),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            showCustomDialog(
+                              context,
+                              onValue: (_) {},
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
