@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:resculpt/widgets/sign_in_dialog.dart';
 import 'package:resculpt/auth/signup.dart';
 
@@ -13,7 +12,8 @@ void showCustomDialog(BuildContext context, {required ValueChanged onValue}) {
         body: Center(
           child: Container(
             margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.only(top: 32, left: 24, right: 24, bottom: 5),
+            padding:
+                const EdgeInsets.only(top: 32, left: 24, right: 24, bottom: 5),
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.95),
               borderRadius: BorderRadius.circular(40),
