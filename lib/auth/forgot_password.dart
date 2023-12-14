@@ -117,6 +117,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   }
                   return null;
                 },
+                controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
@@ -141,8 +142,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             ),              
                 Padding(
             padding: const EdgeInsets.only(bottom: 15),
-            child: ElevatedButton.icon(
-              onPressed: (){_resetPassword();},
+            child: ElevatedButton(
+              onPressed: _resetPassword,
               style: ElevatedButton.styleFrom(
                         backgroundColor: primaryColor,
                         minimumSize: const Size(double.infinity, 56),
@@ -155,11 +156,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           ),
                         ),
                       ),
-                      icon: const Icon(
-                        CupertinoIcons.arrow_right,
-                        color: Colors.white,
-                      ),
-                      label: const Text("Reset Password", style: TextStyle(color: Colors.white),),
+                      child: const Text("Reset Password", style: TextStyle(color: Colors.white),),
             ),
                     ),   
               ],
