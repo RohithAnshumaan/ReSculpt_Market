@@ -31,15 +31,28 @@ class _SignupState extends State<Signup> {
     super.dispose();
   }
 
-  Future addUserDetails(
-    String username,
-    String email,
-  ) async {
-    await FirebaseFirestore.instance.collection('users').add({
-      "uname": username,
-      "email": email,
-      "cartProdIds": cartProdIds,
-    });
+  Future<void> addUserDetails(String username, String email) async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      final List<String> chattedWith = [];
+      final List<String> cartProdIds = [];
+
+      if (user != null) {
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+          "uname": username,
+          "email": email,
+          "uid": user.uid,
+          "cartProdIds": cartProdIds,
+          "chattedWith": chattedWith,
+        });
+      } else {
+        // Handle the case where user is null (not signed in)
+        //print("User is not signed in");
+      }
+    } catch (e) {
+      //print("Error adding user details: $e");
+      // Handle the error as needed
+    }
   }
 
   void registerUser() async {
