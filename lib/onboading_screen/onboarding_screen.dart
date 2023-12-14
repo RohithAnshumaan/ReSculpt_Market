@@ -27,9 +27,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: InkWell(
               onTap: () {
                 showCustomDialog(
-                                  context,
-                                  onValue: (_) {},
-                                );
+                  context,
+                  onValue: (_) {},
+                );
               }, //to login screen. We will update later
               child: const Text(
                 'Skip',
@@ -61,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               createPage(
                 image: Lottie.asset(
-                  'assets/anim1.json',
+                  'assets/page2.json',
                   fit: BoxFit.cover,
                 ),
                 title: Constants.titleTwo,
@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               createPage(
                 image: Lottie.asset(
-                  'assets/anim2.json',
+                  'assets/page3.json',
                   fit: BoxFit.cover,
                 ),
                 title: Constants.titleThree,
